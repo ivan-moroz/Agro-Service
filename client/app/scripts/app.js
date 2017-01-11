@@ -1,1 +1,1 @@
-alert('Run');
+alert('Agro service client work!');

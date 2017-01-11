@@ -7,10 +7,10 @@ var sass = require('gulp-sass');
 //var server = lr();
 
 gulp.task('scripts', function() {
-    gulp.src(['app/scripts/*.js'])
+    gulp.src(['./app/scripts/*.js'])
         .pipe(browserify())
-        .pipe(concat('dest.js'))
-        .pipe(gulp.dest('build'))
+        .pipe(concat('main.js'))
+        .pipe(gulp.dest('./build/'))
         //.pipe(refresh(server))
 })
 
@@ -21,19 +21,16 @@ gulp.task('scripts', function() {
 // })
 
 gulp.task('sass', function () {
-  gulp.src('app/sass/*.scss')
+  return gulp.src('./app/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('build/css'))
-});
-
-gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+    .pipe(gulp.dest('./build/css'))
 });
 
 gulp.task('default', function() {
-  var client = ['scripts', 'sass:watch'];
 
-  gulp.start('scripts', 'sass:watch');
+  var client = ['sass', 'scripts'];
+
+  gulp.start('sass', 'scripts' );
 
   gulp.watch('app/**', client);
 })
