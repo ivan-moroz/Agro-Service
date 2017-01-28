@@ -20,6 +20,11 @@ gulp.task('scripts', function() {
 //     });
 // })
 
+gulp.task('copyHtml', function () {
+   return gulp.src('./index.html')
+    .pipe(gulp.dest('./build/'));
+});
+
 gulp.task('sass', function () {
   return gulp.src('./app/sass/*.scss')
     .pipe(sass().on('error', sass.logError))
@@ -28,9 +33,9 @@ gulp.task('sass', function () {
 
 gulp.task('default', function() {
 
-  var client = ['sass', 'scripts'];
+  var client = ['sass', 'scripts', 'copyHtml'];
 
-  gulp.start('sass', 'scripts' );
+  gulp.start('sass', 'scripts', 'copyHtml');
 
   gulp.watch('app/**', client);
 })

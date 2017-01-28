@@ -4,7 +4,10 @@
   "description": "Agro Service",
   "main": "app.js",
   "dependencies": {
-    "gulp": "^3.9.1"
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "helmet": "^3.3.0",
+    "node-static": "^0.7.9"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
